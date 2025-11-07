@@ -13,7 +13,7 @@ const app = express();
 app.use(cors({
   origin: [
   "https://net-tech-front-end.vercel.app",
-  "http://localhost:4000"
+  "http://localhost:5173"
 ],
   credentials: true, // if you're sending cookies or auth headers
 }));
