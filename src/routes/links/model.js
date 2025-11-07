@@ -9,7 +9,8 @@ const linkSchema = new mongoose.Schema(
       trim: true,
     },
     examCenter: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId, // Reference type
+      ref: 'User',                    // Name of the model you’re linking to
       required: [true, 'Exam Center is required'],
       trim: true,
     },

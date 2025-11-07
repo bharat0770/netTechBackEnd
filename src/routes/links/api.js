@@ -5,6 +5,7 @@ const adminCheck = require("../../middlware/auth");
 
 // CRUD routes
 router.post('/create',  linkController.createLink);
+
 router.get('/all', linkController.getAllLinks);
 router.get('/:id', linkController.getLinkById);
 router.put('/:id', linkController.updateLink);

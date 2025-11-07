@@ -80,13 +80,12 @@ exports.userLogin = async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-
     console.log(password, user);
     let decrypt = await bcrypt.compare(password, user.password);
     if (!decrypt) {
       throw new Error("invalid user credentials");
     } else {
-      const accessToken = jwt.sign({ username: user.username, role: user.role }, process.env.jwt_key || "shhhh");
+      const accessToken = jwt.sign({ username: user.username, role: user.role, id : user._id }, process.env.jwt_key || "shhhh");
       res.status(201).json({
         data: { accessToken: accessToken },
         success: true,

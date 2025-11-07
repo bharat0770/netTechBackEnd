@@ -8,7 +8,6 @@ exports.createLink = async (req, res) => {
     if (!examName || !examCenter || !examUrl) {
       return res.status(400).json({ message: 'All fields are required' });
     }
-
     const newLink = await Link.create({ examName, examCenter, examUrl });
     res.status(201).json({ message: 'Link created successfully', link: newLink });
   } catch (error) {
@@ -19,8 +18,9 @@ exports.createLink = async (req, res) => {
 
 // ✅ READ all links
 exports.getAllLinks = async (req, res) => {
+  
   try {
-    const links = await Link.find().sort({ createdAt: -1 });
+    const links = await Link.find().sort({ createdAt: -1 }).populate("examCenter");
     res.status(200).json(links);
   } catch (error) {
     console.error('Error fetching links:', error);
