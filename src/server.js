@@ -10,7 +10,13 @@ const linkRoutes = require('./routes/links/api');
 const app = express();
 
 // 🔧 Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+  "https://net-tech-front-end.vercel.app",
+  "http://localhost:4000"
+],
+  credentials: true, // if you're sending cookies or auth headers
+}));
 app.use(express.json());
 
 // 🧩 Routes
